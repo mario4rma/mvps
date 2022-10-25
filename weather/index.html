@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <script src="weather.js"></script>
+    <script>
+      let gasRenderer = null;
+
+      document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+          /* INIT COLLAPSIBLES */
+          var coll = document.getElementsByClassName('collapsible');
+          var i;
+
+          for (i = 0; i < coll.length; i++) {
+            coll[i].addEventListener('click', function () {
+              this.classList.toggle('active');
+              var content = this.nextElementSibling;
+              if (content.style.display === 'grid') {
+                content.style.display = 'none';
+              } else {
+                content.style.display = 'grid';
+              }
+            });
+          }
+
+          const weatherRenderer = new RmaWeather();
+          weatherRenderer.getWeather(
+            47.269222050471136,
+            11.403851534487233,
+            'innsbruck',
+            11121
+          );
+          weatherRenderer.getWeather(
+            47.846361623894516,
+            16.52758961221166,
+            'eisenstadt',
+            11121
+          );
+          weatherRenderer.getWeather(
+            48.30906780932763,
+            14.285119944671044,
+            'linz',
+            11121
+          );
+        },
+        false
+      );
+    </script>
+    <button type="button" class="collapsible">Innsbruck</button>
+    <div class="content-container content">
+      <button type="button" class="collapsible">Innsbruck aktuell</button>
+      <div id="innsbruckh0" class="current-weather content"></div>
+      <iframe
+        src="https://www.kleinezeitung.at/service/wetter?poiId=70101"
+        style="width: 100%; height: 70vh; grid-row: 1/10; grid-column: 2/2"
+      ></iframe>
+      <iframe
+        src="https://www.kleinezeitung.at/service/wetter?poiId=70101&view=7"
+        style="width: 100%; height: 70vh; grid-row: 1/10; grid-column: 3/3"
+      ></iframe>
+      <button type="button" class="collapsible">Innsbruck +1 Stunde</button>
+      <div id="innsbruckh1" class="content current-weather"></div>
+      <button type="button" class="collapsible">Innsbruck +2 Stunden</button>
+      <div id="innsbruckh2" class="content current-weather"></div>
+      <button type="button" class="collapsible">Innsbruck +3 Stunden</button>
+      <div id="innsbruckh3" class="content current-weather"></div>
+      <button type="button" class="collapsible">Innsbruck Tag</button>
+      <div id="innsbruckd0" class="content current-weather"></div>
+      <button type="button" class="collapsible">Innsbruck +1 Tag</button>
+      <div id="innsbruckd1" class="content current-weather"></div>
+      <button type="button" class="collapsible">Innsbruck +2 Tage</button>
+      <div id="innsbruckd2" class="content current-weather"></div>
+      <button type="button" class="collapsible">Innsbruck +3 Tage</button>
+      <div id="innsbruckd3" class="content current-weather"></div>
+    </div>
+
+    <button type="button" class="collapsible">Eisenstadt</button>
+    <div class="content-container content">
+      <button type="button" class="collapsible">Eisenstadt aktuell</button>
+      <div id="eisenstadth0" class="current-weather content"></div>
+      <iframe
+        src="https://www.kleinezeitung.at/service/wetter?poiId=10101"
+        style="width: 100%; height: 70vh; grid-row: 1/10; grid-column: 2/2"
+      ></iframe>
+      <iframe
+        src="https://www.kleinezeitung.at/service/wetter?poiId=10101&view=7"
+        style="width: 100%; height: 70vh; grid-row: 1/10; grid-column: 3/3"
+      ></iframe>
+      <button type="button" class="collapsible">Eisenstadt +1 Stunde</button>
+      <div id="eisenstadth1" class="content current-weather"></div>
+      <button type="button" class="collapsible">Eisenstadt +2 Stunden</button>
+      <div id="eisenstadth2" class="content current-weather"></div>
+      <button type="button" class="collapsible">Eisenstadt +3 Stunden</button>
+      <div id="eisenstadth3" class="content current-weather"></div>
+      <button type="button" class="collapsible">Eisenstadt Tag</button>
+      <div id="eisenstadtd0" class="content current-weather"></div>
+      <button type="button" class="collapsible">Eisenstadt +1 Tag</button>
+      <div id="eisenstadtd1" class="content current-weather"></div>
+      <button type="button" class="collapsible">Eisenstadt +2 Tage</button>
+      <div id="eisenstadtd2" class="content current-weather"></div>
+      <button type="button" class="collapsible">Eisenstadt +3 Tage</button>
+      <div id="eisenstadtd3" class="content current-weather"></div>
+    </div>
+
+    <button type="button" class="collapsible">Linz</button>
+    <div class="content-container content">
+      <button type="button" class="collapsible">Linz aktuell</button>
+      <div id="linzh0" class="current-weather content"></div>
+      <iframe
+        src="https://www.kleinezeitung.at/service/wetter?poiId=40101"
+        style="width: 100%; height: 70vh; grid-row: 1/10; grid-column: 2/2"
+      ></iframe>
+      <iframe
+        src="https://www.kleinezeitung.at/service/wetter?poiId=40101&view=7"
+        style="width: 100%; height: 70vh; grid-row: 1/10; grid-column: 3/3"
+      ></iframe>
+      <button type="button" class="collapsible">Linz +1 Stunde</button>
+      <div id="linzh1" class="content current-weather"></div>
+      <button type="button" class="collapsible">Linz +2 Stunden</button>
+      <div id="linzh2" class="content current-weather"></div>
+      <button type="button" class="collapsible">Linz +3 Stunden</button>
+      <div id="linzh3" class="content current-weather"></div>
+      <button type="button" class="collapsible">Linz Tag</button>
+      <div id="linzd0" class="content current-weather"></div>
+      <button type="button" class="collapsible">Linz +1 Tag</button>
+      <div id="linzd1" class="content current-weather"></div>
+      <button type="button" class="collapsible">Linz +2 Tage</button>
+      <div id="linzd2" class="content current-weather"></div>
+      <button type="button" class="collapsible">Linz +3 Tage</button>
+      <div id="linzd3" class="content current-weather"></div>
+    </div>
+  </body>
+</html>

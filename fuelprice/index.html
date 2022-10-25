@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>HTML 5 Boilerplate</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+      integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+      crossorigin=""
+    />
+  </head>
+  <body>
+    <script src="index.js"></script>
+    <!-- Make sure you put this AFTER Leaflet's CSS -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+      integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+      crossorigin=""
+    ></script>
+    <script>
+      let gasRenderer = null;
+
+      document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+          gasRenderer = new RmaGasStationRenderer(702, 'fuelContainer');
+          gasRenderer.renderGasStations();
+        },
+        false
+      );
+
+      function updateStations() {
+        gasRenderer.update(document.getElementById('districts').value);
+      }
+    </script>
+    <label for="districts">Wähle einen Bezirk:</label>
+    <select name="districts" id="districts" onchange="updateStations()">
+      <option value="702">Imst</option>
+      <option value="706">Landeck</option>
+      <option value="701">Innsbruck Stadt</option>
+      <option value="703">Innsbruck Land</option>
+    </select>
+
+    <div id="fuelContainer"></div>
+  </body>
+</html>
